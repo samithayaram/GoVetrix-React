@@ -1,14 +1,11 @@
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth, googleProvider } from "../firebase";
 
 const Login = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-
+  const navigate = useNavigate(); // Correct placement inside the component
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
 
   // Validation function
@@ -51,10 +48,10 @@ const Login = () => {
       try {
         await signInWithEmailAndPassword(auth, email, password);
         alert("Login successful!");
-        setFormData({ email: "", password: "" });
+        navigate("/app-interface"); // Navigate after successful login
       } catch (error) {
         console.error("Login error:", error.message);
-        alert("Login failed! Please check your credentials.");
+        alert("User not found. Please register.");
       }
     }
   };
@@ -64,6 +61,7 @@ const Login = () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       alert(`Welcome ${result.user.displayName}!`);
+      navigate("/app-interface"); // Navigate after successful Google login
     } catch (error) {
       console.error("Google Sign-In error:", error);
       alert("Google Sign-In failed!");
@@ -84,11 +82,7 @@ const Login = () => {
         </div>
 
         <form className="mt-4 space-y-4" autoComplete="off" onSubmit={handleSubmit}>
-          {/* Floating Label Inputs */}
-          {[
-            { id: "email", type: "email", label: "Email address" },
-            { id: "password", type: "password", label: "Password" },
-          ].map(({ id, type, label }) => (
+          {[{ id: "email", type: "email", label: "Email address" }, { id: "password", type: "password", label: "Password" }].map(({ id, type, label }) => (
             <div key={id} className="relative">
               <input
                 id={id}
@@ -96,8 +90,9 @@ const Login = () => {
                 type={type}
                 value={formData[id]}
                 onChange={handleChange}
-                className={`peer block w-full rounded-md px-3 pb-2 pt-4 text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600
-                ${errors[id] ? "border-red-500" : "border-gray-300"}`}
+                className={`peer block w-full rounded-md px-3 pb-2 pt-4 text-gray-900 bg-gray-50 border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 ${
+                  errors[id] ? "border-red-500" : "border-gray-300"
+                }`}
                 placeholder=" "
               />
               <label
@@ -110,28 +105,23 @@ const Login = () => {
             </div>
           ))}
 
-          {/* Forgot Password */}
           <div className="flex justify-end text-xs">
-            <a href="#" className="text-indigo-600 hover:text-indigo-500">Forgot password?</a>
+            <a href="#" className="text-indigo-600 hover:text-indigo-500">
+              Forgot password?
+            </a>
           </div>
 
-          {/* Submit Button */}
-          <button
-            type="submit"
-            className="w-full bg-indigo-600 text-white py-2 rounded-md text-sm font-semibold hover:bg-indigo-500 transition-all"
-          >
+          <button type="submit" className="w-full bg-indigo-600 text-white py-2 rounded-md text-sm font-semibold hover:bg-indigo-500 transition-all">
             Sign In
           </button>
         </form>
 
-        {/* Divider */}
         <div className="mt-4 flex items-center">
           <div className="flex-grow border-t border-gray-300"></div>
           <span className="mx-2 text-gray-500 text-xs">OR</span>
           <div className="flex-grow border-t border-gray-300"></div>
         </div>
 
-        {/* Sign in with Google */}
         <button
           type="button"
           onClick={handleGoogleLogin}
@@ -140,7 +130,6 @@ const Login = () => {
           Sign in with Google
         </button>
 
-        {/* Guest Login */}
         <button
           type="button"
           onClick={handleGuestLogin}
@@ -149,10 +138,11 @@ const Login = () => {
           Sign in as Guest
         </button>
 
-        {/* Register Redirect */}
         <p className="mt-4 text-center text-xs text-gray-500">
           Don't have an account?{" "}
-          <Link to="/register" className="text-indigo-600 hover:text-indigo-500 font-semibold">Register here</Link>
+          <Link to="/register" className="text-indigo-600 hover:text-indigo-500 font-semibold">
+            Register here
+          </Link>
         </p>
       </div>
     </div>

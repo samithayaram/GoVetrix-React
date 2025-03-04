@@ -10,6 +10,7 @@ import Login from './components/login'
 import Team from './components/team'
 import Register from './components/register'
 import { Footer } from './components/footer'
+import AppInterface from './screens/appInterface'
 
 function App() {
 
@@ -25,6 +26,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/app-interface" element={<AppInterface />} />
+
       </Routes>
       <Footer/>
     </>
