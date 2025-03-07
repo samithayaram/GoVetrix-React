@@ -5,6 +5,7 @@ import { auth, db } from "../firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import logo from '../assets/logo.png';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -114,7 +115,7 @@ const Register = () => {
       <div className="w-[90%] sm:w-[320px] bg-white p-5 rounded-lg shadow-md text-gray-900 mt-[-40px] sm:mt-[-40px]">
         <ToastContainer position="top-right" autoClose={3000} />
         <div className="text-center">
-          <img alt="Your Company" src="src/assets/logo.png" className="mx-auto h-8 w-auto" />
+          <img alt="GoVetrix" src={logo} className="mx-auto h-8 w-auto object-contain rounded-lg" />
           <h2 className="mt-2 text-xl font-bold">Create an Account</h2>
         </div>
 

@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { auth, googleProvider } from "../firebase";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import logo from '../assets/logo.png';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -32,7 +33,8 @@ const Login = () => {
     }
     if (name === "password") {
       if (!value.trim()) error = "Password is required.";
-      else if (value.length < 6) error = "Password must be at least 6 characters.";
+      else if (value.length < 6)
+        error = "Password must be at least 6 characters.";
     }
     return error;
   };
@@ -76,7 +78,11 @@ const Login = () => {
   const handleGoogleLogin = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
-      notifyAndNavigate("success", `Welcome ${result.user.displayName}!`, "/app-interface");
+      notifyAndNavigate(
+        "success",
+        `Welcome ${result.user.displayName}!`,
+        "/app-interface"
+      );
     } catch (error) {
       console.error("Google Sign-In error:", error);
       toast.error("Google Sign-In failed. Try again.");
@@ -95,12 +101,17 @@ const Login = () => {
 
       <div className="w-[90%] sm:w-[320px] bg-white p-5 rounded-lg shadow-md text-gray-900 mt-[-40px] sm:mt-[-40px]">
         <div className="text-center">
-          <img alt="GoVetrix" src="src/assets/logo.png" className="mx-auto h-8 w-auto" />
+          <img alt="GoVetrix" src={logo} className="mx-auto h-8 w-auto object-contain rounded-lg" />
+
           <h2 className="mt-2 text-xl font-bold">Login</h2>
         </div>
 
         {/* Form */}
-        <form className="mt-4 space-y-4" autoComplete="off" onSubmit={handleSubmit}>
+        <form
+          className="mt-4 space-y-4"
+          autoComplete="off"
+          onSubmit={handleSubmit}
+        >
           {Object.keys(formData).map((field) => (
             <div key={field} className="relative">
               <input
@@ -110,7 +121,9 @@ const Login = () => {
                 value={formData[field]}
                 onChange={handleChange}
                 className={`peer block w-full rounded-md px-3 pb-2 pt-4 text-gray-900 bg-gray-50 border-0 border-b-2 focus:outline-none focus:ring-0 ${
-                  errors[field] ? "border-red-500" : "border-gray-300 focus:border-blue-600"
+                  errors[field]
+                    ? "border-red-500"
+                    : "border-gray-300 focus:border-blue-600"
                 }`}
                 placeholder=" "
               />
@@ -120,7 +133,9 @@ const Login = () => {
               >
                 {field.charAt(0).toUpperCase() + field.slice(1)}
               </label>
-              {errors[field] && <span className="text-red-500 text-xs">{errors[field]}</span>}
+              {errors[field] && (
+                <span className="text-red-500 text-xs">{errors[field]}</span>
+              )}
             </div>
           ))}
 
@@ -155,8 +170,13 @@ const Login = () => {
         </button>
 
         <p className="mt-4 text-center text-xs text-gray-500">
-          Don't have an account?{' '}
-          <Link to="/register" className="text-indigo-600 hover:text-indigo-500 font-semibold">Register here</Link>
+          Don't have an account?{" "}
+          <Link
+            to="/register"
+            className="text-indigo-600 hover:text-indigo-500 font-semibold"
+          >
+            Register here
+          </Link>
         </p>
       </div>
     </div>
