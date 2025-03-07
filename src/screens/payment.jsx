@@ -100,7 +100,7 @@ const Payment = () => {
 
           {/* Right Section - Payment Summary */}
           <div className="bg-gray-50 p-6 rounded-lg">
-            <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
+            <h2 className="text-xl font-semibold mb-4">Fair Details</h2>
 
             <div className="space-y-3 mb-6">
               <div className="flex justify-between">
