@@ -37,9 +37,7 @@ const people = [
               Meet our leadership
             </h2>
             <p className="mt-4 text-lg text-white text-center">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem modi quibusdam molestias nulla ad est, optio sint, similique ipsam ab officia quae excepturi cum non tenetur magni quisquam. Eos, qui?
-              Nostrum quae perspiciatis modi consectetur qui sed, distinctio illo dolore sit facere cupiditate excepturi ut, itaque exercitationem nam delectus. Fuga et at dolorem sed alias. Beatae assumenda ducimus quibusdam quas?
-              Officiis, pariatur ut? Ab eius voluptatibus!
+            Our leadership team is dedicated to driving innovation, ensuring customer satisfaction, and fostering a culture of excellence. With diverse expertise across technology, operations, and customer service, our leaders bring a shared vision to redefine modern transportation.Their collective vision shapes our mission to redefine modern transportation, making travel smarter, safer, and more accessible for everyone.
             </p>
             <div className="mt-6 flex justify-center">
           <Link to="/contact" className="bg-[#4dfad4] px-6 py-3 text-black rounded-md hover:bg-[#22f0c3] transition font-bold text-center w-full md:w-auto">

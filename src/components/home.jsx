@@ -27,7 +27,7 @@ function Home() {
             Data to enrich your online business
           </h1>
           <p className="mt-3 text-sm sm:text-base lg:text-lg text-white">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto cupiditate tempora harum. Voluptas quis accusamus, consequatur fugit voluptates amet unde nulla animi excepturi laboriosam, deserunt quod officia mollitia. 
+          A ride-sharing app is a digital platform that connects passengers with drivers offering transportation services. It allows users to request rides through a mobile application, providing a convenient and often cost-effective alternative to traditional taxis.Ride-sharing services provide an affordable and flexible alternative to traditional taxis while reducing traffic congestion through carpooling options.
           </p>
           <motion.div 
             className="mt-4 flex gap-x-3"

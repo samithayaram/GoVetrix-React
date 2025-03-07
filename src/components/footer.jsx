@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaFacebook, FaTwitter, FaGithub, FaLinkedin, FaMapMarkerAlt, FaPhone, FaEnvelope, FaAngleRight } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaLinkedin, FaMapMarkerAlt, FaPhone, FaEnvelope, FaAngleRight } from "react-icons/fa";
 
 export function Footer() {
   return (
@@ -13,7 +13,6 @@ export function Footer() {
           <div className="flex gap-4 mt-4">
             <a href="https://www.facebook.com/" className="text-white hover:text-gray-400"><FaFacebook size={24} /></a>
             <a href="https://x.com/i/flow/login" className="text-white hover:text-gray-400"><FaTwitter size={24} /></a>
-            <a href="https://github.com/" className="text-white hover:text-gray-400"><FaGithub size={24} /></a>
             <a href="https://www.linkedin.com/feed/" className="text-white hover:text-gray-400"><FaLinkedin size={24} /></a>
           </div>
         </div>

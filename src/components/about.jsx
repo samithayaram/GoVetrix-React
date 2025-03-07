@@ -14,8 +14,7 @@ export default function About() {
       <div className="md:w-1/2 text-center md:text-left p-6">
         <h2 className="text-3xl md:text-4xl font-bold text-white text-center">About Us</h2>
         <p className="mt-4 text-white text-base md:text-lg text-center">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium placeat ducimus laudantium consectetur aspernatur. Dolores, dolorum quisquam. Facere nemo ut atque eveniet mollitia distinctio repudiandae in placeat, aut voluptas reiciendis?
-          Quidem, expedita sequi dolorum soluta ducimus in nostrum atque excepturi!
+        A ride-sharing app is a digital platform that connects passengers with drivers for convenient and on-demand transportation. Users can request a ride through the app by entering their pickup and drop-off locations, and the app matches them with nearby drivers. These apps offer features like real-time tracking, fare estimation, cashless payments, and driver ratings to ensure a smooth and secure experience. Ride-sharing services provide an affordable and flexible.
         </p>
         
         <div className="mt-6 flex justify-center">

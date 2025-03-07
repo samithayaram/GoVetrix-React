@@ -20,8 +20,7 @@ const Banner = () => {
           {/* <span className="text-gray-400">See for yourself.</span> */}
         </h2>
         <p className="text-base md:text-lg leading-relaxed text-center">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi qui quia quidem exercitationem dolorem libero placeat possimus vitae laudantium asperiores ea nam quos illum, ab harum neque fugiat veritatis est!
-          Pariatur voluptatibus quae vel assumenda. Id quidem corporis laudantium repellendus quaerat est ipsum nemo accusantium, officiis delectus neque aliquid magni culpa nulla! Quisquam quasi, asperiores corrupti sint labore molestiae modi!
+        A ride-sharing app is a digital platform that connects passengers with drivers for convenient and on-demand transportation. Users can request a ride through the app by entering their pickup and drop-off locations, and the app matches them with nearby drivers. These apps offer features like real-time tracking, fare estimation, cashless payments, and driver ratings to ensure a smooth and secure experience. Ride-sharing services provide an affordable and flexible alternative to traditional taxis while reducing traffic congestion through carpooling options. Popular ride-sharing apps include Uber, Lyft, Bolt, and Ola, each offering unique services across different regions.
         </p>
         <div className="mt-6 flex justify-center">
           <Link to="/about" className="bg-[#4dfad4] px-6 py-3 text-black rounded-md hover:bg-[#22f0c3] transition font-bold text-center w-full md:w-auto">

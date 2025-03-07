@@ -1,7 +1,9 @@
 import { Autocomplete, useJsApiLoader } from "@react-google-maps/api";
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import appInterfaceImage from "../assets/safety3.jpg";
+import { Compass } from "lucide-react"; // Import GPS Icon
+import appInterfaceImage from "../assets/img2.jpg";
+
 const LIBRARIES = ["places"];
 
 const AppInterface = () => {
@@ -19,11 +21,43 @@ const AppInterface = () => {
     googleMapsApiKey: "AIzaSyD3GfwiXBfdfmRTjSOxQw5IutdZbsDlizc",
     libraries: LIBRARIES,
   });
+
   if (!isLoaded) {
-    return <div>Loading...</div>;
+    return <div className="text-white">Loading...</div>;
   }
 
-  const confirmRide = async (e) => {
+  const getCurrentLocation = () => {
+    if (!navigator.geolocation) {
+      alert("Geolocation is not supported by your browser.");
+      return;
+    }
+
+    fromRef.current.value = "Fetching current location...";
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const { latitude, longitude } = position.coords;
+        const geocoder = new window.google.maps.Geocoder();
+        const latLng = { lat: latitude, lng: longitude };
+
+        geocoder.geocode({ location: latLng }, (results, status) => {
+          if (status === "OK" && results[0]) {
+            fromRef.current.value = results[0].formatted_address;
+          } else {
+            alert("Unable to retrieve address. Please enter manually.");
+            fromRef.current.value = "";
+          }
+        });
+      },
+      (error) => {
+        alert("Error retrieving location: " + error.message);
+        fromRef.current.value = "";
+      },
+      { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 }
+    );
+  };
+
+  const confirmRide = (e) => {
     e.preventDefault();
 
     const fromEntered = fromRef.current.value;
@@ -55,93 +89,104 @@ const AppInterface = () => {
   };
 
   return (
-    <>
-      <div className="flex flex-col lg:flex-row items-center lg:justify-evenly lg:px-20 space-y-8 lg:space-y-0 lg:space-x-10 border">
-        <div className="w-full lg:w-1/2 max-w-md mx-auto lg:mx-0">
-          <img
-            alt="Your Company"
-            src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
-            className="mx-auto h-10 w-auto"
-          />
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Let's start a Ride...
-          </h2>
-
-          <div className="mt-10">
-            <form onSubmit={confirmRide} className="space-y-6">
-              <div>
-                <label
-                  htmlFor="from"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                  FROM:
-                </label>
-                <div className="mt-2">
-                  <Autocomplete onPlaceChanged={() => console.log(fromRef.current.value)}>
-                    <input
-                      placeholder="Start from"
-                      id="from"
-                      name="from"
-                      type="text"
-                      ref={fromRef}
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
-                  </Autocomplete>
-                  {formErrors.fromError && (
-                    <span className="text-red-500">{formErrors.fromAdd}</span>
-                  )}
-                </div>
-              </div>
-
-              <div>
-                <div className="flex items-center justify-between">
-                  <label
-                    htmlFor="destination"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    TO:
-                  </label>
-                </div>
-                <div className="mt-2">
-                  <Autocomplete onPlaceChanged={() => {}}>
-                    <input
-                      id="destination"
-                      name="destination"
-                      type="text"
-                      placeholder="Choose destination"
-                      ref={destinationRef}
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
-                  </Autocomplete>
-                  {formErrors.destinationError && (
-                    <span className="text-red-500">
-                      {formErrors.destinationAdd}
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              <div>
-                <button
-                  type="submit"
-                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >
-                  Confirm Location
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-
-        <div className="w-full lg:w-1/2 max-w-lg mx-auto lg:mx-0 lg:max-w-md xl:max-w-lg border">
-          <img
-            src={appInterfaceImage}
-            alt="App Interface"
-            className="w-full rounded-lg shadow-lg"
-          />
-        </div>
+    <div className="flex flex-col lg:flex-row items-center lg:justify-between px-4 lg:px-20 space-y-8 lg:space-y-0 bg-black min-h-screen p-8">
+      {/* Logo Section */}
+      <div className="absolute top-4 left-1/2 -translate-x-1/2 lg:left-4 lg:translate-x-0">
+        <img
+          src="src/assets/logo.png"
+          alt="Ride Logo"
+          className="w-8 h-auto lg:w-10"
+        />
       </div>
-    </>
+
+      <div className="w-full lg:w-1/2 max-w-md mx-auto lg:mx-0 lg:ml-5">
+        <h2 className="mt-10 text-center text-3xl font-bold text-white">
+          Let's start a Ride...
+        </h2>
+
+        <form onSubmit={confirmRide} className="mt-10 space-y-6">
+          {/* FROM Section */}
+          <div>
+            <label
+              htmlFor="from"
+              className="block text-sm font-medium text-white"
+            >
+              FROM:
+            </label>
+            <div className="mt-2 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-2">
+              <Autocomplete onPlaceChanged={() => {}}>
+                <input
+                  placeholder="Start from"
+                  id="from"
+                  name="from"
+                  type="text"
+                  ref={fromRef}
+                  className="block w-full rounded-md bg-gray-800 text-white py-2 px-4 focus:ring-indigo-500 focus:border-indigo-500"
+                />
+              </Autocomplete>
+
+              {/* Button with GPS Icon */}
+              <button
+                type="button"
+                onClick={getCurrentLocation}
+                className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-500 transition w-full sm:w-auto flex items-center justify-center gap-2"
+              >
+                <Compass size={22} />
+                Use Current Location
+              </button>
+            </div>
+            {formErrors.fromError && (
+              <span className="text-red-500">{formErrors.fromError}</span>
+            )}
+          </div>
+
+          {/* TO Section */}
+          <div>
+            <label
+              htmlFor="destination"
+              className="block text-sm font-medium text-white"
+            >
+              TO:
+            </label>
+            <div className="mt-2">
+              <Autocomplete onPlaceChanged={() => {}}>
+                <input
+                  id="destination"
+                  name="destination"
+                  type="text"
+                  placeholder="Choose destination"
+                  ref={destinationRef}
+                  className="block w-full rounded-md bg-gray-800 text-white py-2 px-4 focus:ring-indigo-500 focus:border-indigo-500"
+                />
+              </Autocomplete>
+              {formErrors.destinationError && (
+                <span className="text-red-500">
+                  {formErrors.destinationError}
+                </span>
+              )}
+            </div>
+          </div>
+
+          {/* Confirm Location Button */}
+          <button
+            type="submit"
+            className="w-full rounded-md bg-indigo-600 py-2 text-white font-semibold hover:bg-indigo-500 transition duration-300"
+          >
+            Confirm Location
+          </button>
+        </form>
+      </div>
+
+      {/* Image Section */}
+      <div className="w-full lg:w-1/2 max-w-lg mx-auto lg:mx-0 lg:ml-2.5 flex items-center">
+        <img
+          src={appInterfaceImage}
+          alt="App Interface"
+          className="w-full h-auto max-h-[60vh] rounded-lg shadow-lg"
+        />
+      </div>
+    </div>
   );
 };
+
 export default AppInterface;
