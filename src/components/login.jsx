@@ -95,7 +95,7 @@ const Login = () => {
 
       <div className="w-[90%] sm:w-[320px] bg-white p-5 rounded-lg shadow-md text-gray-900 mt-[-40px] sm:mt-[-40px]">
         <div className="text-center">
-          <img alt="Your Company" src="src/assets/logo.png" className="mx-auto h-8 w-auto" />
+          <img alt="GoVetrix" src="src/assets/logo.png" className="mx-auto h-8 w-auto" />
           <h2 className="mt-2 text-xl font-bold">Login</h2>
         </div>
 

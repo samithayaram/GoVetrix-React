@@ -58,8 +58,8 @@ const Payment = () => {
           >
            ← Back
          </button>
-       </div>
-
+        </div>
+        
         {/* Vehicle Payment Heading (Left Aligned) */}
         <header className="flex justify-center items-center mt-10 mb-8">
           <h1 className="text-2xl font-bold">🚗 Vehicle Payment</h1>

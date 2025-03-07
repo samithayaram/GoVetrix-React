@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { MdLogin } from "react-icons/md";
+import logo from "../assets/logo.png";
 
 const navigation = [
   { name: "Home", path: "/" },
@@ -21,7 +22,7 @@ export function Navbar() {
     <header className="bg-[#4dfad4] shadow-md">
     <nav className="flex items-center justify-between p-4 lg:px-4">
     <div className="flex lg:flex-1 items-center">
-      <img src="src/assets/logo.png" alt="Logo" className="h-10 w-auto" />
+    <img src={logo} alt="Logo" className="h-10 w-auto object-contain rounded-lg"/>
       <Link to="/" className="text-lg font-bold text-black ml-2">
         GoVetrix
       </Link>
