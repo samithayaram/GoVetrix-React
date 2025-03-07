@@ -7,6 +7,7 @@ import {
 } from "@react-google-maps/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FaCar, FaMotorcycle, FaBicycle, FaTaxi } from "react-icons/fa";
+import logo from '../assets/logo.png';
 
 const LocationComponent = () => {
   const navigate = useNavigate();
@@ -193,103 +194,111 @@ const LocationComponent = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-black text-white px-4 sm:px-8">
-  <div className="flex flex-col items-center bg-gray-900 p-4 sm:p-8 rounded-2xl shadow-lg w-full max-w-4xl relative">
-
-    {/* Header Section: Back Button and Logo */}
-    <div className="absolute top-4 left-4 flex items-center w-full justify-between px-2 sm:px-4">
-      {/* Back Button */}
-      <button
-        onClick={() => navigate('/app-interface')}
-        className="flex items-center gap-2 text-white bg-blue-600 px-3 sm:px-4 py-2 rounded-lg hover:bg-blue-500 transition duration-300 text-sm sm:text-base"
-      >
-        ← Back
-      </button>
-
-      {/* Centered Logo */}
-      <div className="flex-grow flex justify-center">
-        <img
-          src="src/assets/logo.png"
-          alt="Ride Logo"
-          className="w-10 sm:w-12 h-auto lg:w-14"
-        />
-      </div>
-    </div>
-
-    {/* Google Map Section with More Space Below the Header */}
-    <div className="mt-20 w-full">
-      {isLoaded ? (
-        <GoogleMap
-          onLoad={(map) => (mapRef.current = map)}
-          center={{
-            lat: address.fromLat || 17.385,
-            lng: address.fromLng || 78.4867,
-          }}
-          zoom={12}
-          mapContainerStyle={{ width: "100%", height: "300px", sm: { height: "500px" } }}
-        >
-          {address.fromLat && address.fromLng && (
-            <Marker
-              position={{ lat: address.fromLat, lng: address.fromLng }}
-              label="A"
-            />
-          )}
-          {address.toLat && address.toLng && (
-            <Marker
-              position={{ lat: address.toLat, lng: address.toLng }}
-              label="B"
-            />
-          )}
-          {path.length > 0 && (
-            <Polyline
-              path={path}
-              options={{ strokeColor: "#FF0000", strokeWeight: 4 }}
-            />
-          )}
-        </GoogleMap>
-      ) : (
-        <p>Loading map...</p>
-      )}
-    </div>
-
-    {/* Ride Details Section */}
-    {routeDetails && (
-      <div className="mt-8 w-full">
-        <h3 className="text-xl sm:text-2xl mb-4 text-center">Choose Your Ride</h3>
-        {routeDetails.vehicleOptions.map((vehicle, index) => (
-          <div
-            key={index}
-            className={`flex items-center justify-between py-4 border-b border-gray-700 cursor-pointer ${
-              selectedVehicle?.type === vehicle.type ? "bg-gray-800" : ""
-            }`}
-            onClick={() => setSelectedVehicle(vehicle)}
+      <div className="flex flex-col items-center bg-gray-900 p-4 sm:p-8 rounded-2xl shadow-lg w-full max-w-4xl relative">
+        {/* Header Section: Back Button and Logo */}
+        <div className="absolute top-4 left-4 flex items-center w-full justify-between px-2 sm:px-4">
+          {/* Back Button */}
+          <button
+            onClick={() => navigate("/app-interface")}
+            className="flex items-center gap-2 text-white bg-blue-600 px-3 sm:px-4 py-2 rounded-lg hover:bg-blue-500 transition duration-300 text-sm sm:text-base"
           >
-            <div className="flex items-center gap-4">
-              {vehicle.icon}
-              <div>
-                <div className="font-semibold text-sm sm:text-base">{vehicle.type}</div>
-                <div className="text-sm sm:text-base">
-                  {routeDetails.distance} km - {vehicle.duration} min
+            ← Back
+          </button>
+
+          {/* Centered Logo */}
+          <div className="flex-grow flex justify-center">
+            <img
+              src={logo}
+              alt="Ride Logo"
+              className="w-10 sm:w-12 h-auto lg:w-14 object-contain rounded-lg"
+            />
+          </div>
+        </div>
+
+        {/* Google Map Section with More Space Below the Header */}
+        <div className="mt-20 w-full">
+          {isLoaded ? (
+            <GoogleMap
+              onLoad={(map) => (mapRef.current = map)}
+              center={{
+                lat: address.fromLat || 17.385,
+                lng: address.fromLng || 78.4867,
+              }}
+              zoom={12}
+              mapContainerStyle={{
+                width: "100%",
+                height: "300px",
+                sm: { height: "500px" },
+              }}
+            >
+              {address.fromLat && address.fromLng && (
+                <Marker
+                  position={{ lat: address.fromLat, lng: address.fromLng }}
+                  label="A"
+                />
+              )}
+              {address.toLat && address.toLng && (
+                <Marker
+                  position={{ lat: address.toLat, lng: address.toLng }}
+                  label="B"
+                />
+              )}
+              {path.length > 0 && (
+                <Polyline
+                  path={path}
+                  options={{ strokeColor: "#FF0000", strokeWeight: 4 }}
+                />
+              )}
+            </GoogleMap>
+          ) : (
+            <p>Loading map...</p>
+          )}
+        </div>
+
+        {/* Ride Details Section */}
+        {routeDetails && (
+          <div className="mt-8 w-full">
+            <h3 className="text-xl sm:text-2xl mb-4 text-center">
+              Choose Your Ride
+            </h3>
+            {routeDetails.vehicleOptions.map((vehicle, index) => (
+              <div
+                key={index}
+                className={`flex items-center justify-between py-4 border-b border-gray-700 cursor-pointer ${
+                  selectedVehicle?.type === vehicle.type ? "bg-gray-800" : ""
+                }`}
+                onClick={() => setSelectedVehicle(vehicle)}
+              >
+                <div className="flex items-center gap-4">
+                  {vehicle.icon}
+                  <div>
+                    <div className="font-semibold text-sm sm:text-base">
+                      {vehicle.type}
+                    </div>
+                    <div className="text-sm sm:text-base">
+                      {routeDetails.distance} km - {vehicle.duration} min
+                    </div>
+                  </div>
+                </div>
+                <div className="font-semibold text-sm sm:text-base">
+                  {vehicle.cost}
                 </div>
               </div>
+            ))}
+
+            {/* Book Ride Button */}
+            <div className="flex justify-center">
+              <button
+                onClick={handleBookRide}
+                className="mt-6 bg-green-600 px-4 sm:px-6 py-2 rounded-lg hover:bg-green-500 transition duration-300 text-sm sm:text-base"
+              >
+                Book Ride
+              </button>
             </div>
-            <div className="font-semibold text-sm sm:text-base">{vehicle.cost}</div>
           </div>
-        ))}
-
-        {/* Book Ride Button */}
-        <div className="flex justify-center">
-          <button
-            onClick={handleBookRide}
-            className="mt-6 bg-green-600 px-4 sm:px-6 py-2 rounded-lg hover:bg-green-500 transition duration-300 text-sm sm:text-base"
-          >
-            Book Ride
-          </button>
-        </div>
+        )}
       </div>
-    )}
-  </div>
-</div>
-
+    </div>
   );
 };
 

@@ -3,6 +3,7 @@ import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Compass } from "lucide-react"; // Import GPS Icon
 import appInterfaceImage from "../assets/img2.jpg";
+import logo from "../assets/logo.png";
 
 const LIBRARIES = ["places"];
 
@@ -92,11 +93,7 @@ const AppInterface = () => {
     <div className="flex flex-col lg:flex-row items-center lg:justify-between px-4 lg:px-20 space-y-8 lg:space-y-0 bg-black min-h-screen p-8">
       {/* Logo Section */}
       <div className="absolute top-4 left-1/2 -translate-x-1/2 lg:left-4 lg:translate-x-0">
-        <img
-          src="src/assets/logo.png"
-          alt="Ride Logo"
-          className="w-8 h-auto lg:w-10"
-        />
+        <img src={logo} alt="Ride Logo" className="w-8 h-auto lg:w-10 object-contain rounded-lg" />
       </div>
 
       <div className="w-full lg:w-1/2 max-w-md mx-auto lg:mx-0 lg:ml-5">

@@ -36,7 +36,7 @@ const Safety = () => {
 
       <div className="mt-6 flex justify-center">
         <Link
-          to="/safety"
+          to="/about"
           className="bg-[#4dfad4] px-6 py-3 text-black rounded-md hover:bg-[#22f0c3] transition font-bold text-center"
         >
           Learn More
