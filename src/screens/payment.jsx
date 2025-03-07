@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import qrCode from '../assets/Qrcode.jpg';
 
 const Payment = () => {
   const location = useLocation();
@@ -53,13 +54,13 @@ const Payment = () => {
         <div className="absolute top-4 left-4">
           {/* Back Button (Left) */}
           <button
-          onClick={() => navigate("/app-interface")}
-          className="text-white bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-500 transition duration-300"
+            onClick={() => navigate("/app-interface")}
+            className="text-white bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-500 transition duration-300"
           >
-           ← Back
-         </button>
+            ← Back
+          </button>
         </div>
-        
+
         {/* Vehicle Payment Heading (Left Aligned) */}
         <header className="flex justify-center items-center mt-10 mb-8">
           <h1 className="text-2xl font-bold">🚗 Vehicle Payment</h1>
@@ -90,7 +91,7 @@ const Payment = () => {
             <div className="mt-8">
               <h3 className="text-lg font-semibold mb-4">Scan to Pay</h3>
               <img
-                src="src/assets/Qrcode.jpg"
+                src={qrCode}
                 alt="QR Code"
                 className="w-48 h-48 rounded-lg shadow-md"
               />
