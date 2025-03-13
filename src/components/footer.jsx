@@ -7,9 +7,9 @@ export function Footer() {
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
           <h2 className="text-xl font-bold mb-4">GoVetrix</h2>
-          <p className="flex items-center gap-2"><FaMapMarkerAlt /> 123 Street, New York, USA</p>
-          <p className="flex items-center gap-2"><FaPhone /> +012 345 67890</p>
-          <p className="flex items-center gap-2"><FaEnvelope /> info@example.com</p>
+          <p className="flex items-center gap-2"><FaMapMarkerAlt /> Kphb colony, Hyderabad, India</p>
+          <p className="flex items-center gap-2"><FaPhone /> +91 9345 678901</p>
+          <p className="flex items-center gap-2"><FaEnvelope /> GoVetrix@example.com</p>
           <div className="flex gap-4 mt-4">
             <a href="https://www.facebook.com/" className="text-white hover:text-gray-400"><FaFacebook size={24} /></a>
             <a href="https://x.com/i/flow/login" className="text-white hover:text-gray-400"><FaTwitter size={24} /></a>

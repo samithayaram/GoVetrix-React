@@ -9,7 +9,7 @@ export default function Contact() {
     <div className="relative isolate bg-black text-white px-6 py-24 sm:py-32 lg:px-8">
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="text-4xl font-semibold tracking-tight sm:text-5xl">Contact sales</h2>
-        <p className="mt-2 text-lg">Aute magna irure deserunt veniam aliqua magna enim voluptate.</p>
+        <p className="mt-2 text-lg">If you have any queries, feel free to contact us.</p>
       </div>
       <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
