@@ -95,91 +95,92 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-gray-900 text-white flex min-h-screen items-center justify-center">
-      {/* Toast Notification */}
-      <ToastContainer position="top-right" autoClose={3000} />
+    <div className="bg-gray-900 text-white flex min-h-screen items-center justify-center pt-5 sm:pt-0">
+  {/* Toast Notification */}
+  <ToastContainer position="top-right" autoClose={3000} />
 
-      <div className="w-[90%] sm:w-[320px] bg-white p-5 rounded-lg shadow-md text-gray-900 mt-[-40px] sm:mt-[-40px]">
-        <div className="text-center">
-          <img alt="GoVetrix" src={logo} className="mx-auto h-8 w-auto object-contain rounded-lg" />
-
-          <h2 className="mt-2 text-xl font-bold">Login</h2>
-        </div>
-
-        {/* Form */}
-        <form
-          className="mt-4 space-y-4"
-          autoComplete="off"
-          onSubmit={handleSubmit}
-        >
-          {Object.keys(formData).map((field) => (
-            <div key={field} className="relative">
-              <input
-                id={field}
-                name={field}
-                type={field}
-                value={formData[field]}
-                onChange={handleChange}
-                className={`peer block w-full rounded-md px-3 pb-2 pt-4 text-gray-900 bg-gray-50 border-0 border-b-2 focus:outline-none focus:ring-0 ${
-                  errors[field]
-                    ? "border-red-500"
-                    : "border-gray-300 focus:border-blue-600"
-                }`}
-                placeholder=" "
-              />
-              <label
-                htmlFor={field}
-                className="absolute left-3 top-3 text-gray-500 text-sm transform scale-75 -translate-y-4 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-blue-600"
-              >
-                {field.charAt(0).toUpperCase() + field.slice(1)}
-              </label>
-              {errors[field] && (
-                <span className="text-red-500 text-xs">{errors[field]}</span>
-              )}
-            </div>
-          ))}
-
-          <button
-            type="submit"
-            className="w-full bg-indigo-600 text-white py-2 rounded-md text-sm font-semibold hover:bg-indigo-500 transition-all"
-          >
-            Sign In
-          </button>
-        </form>
-
-        <div className="mt-4 flex items-center">
-          <div className="flex-grow border-t border-gray-300"></div>
-          <span className="mx-2 text-gray-500 text-xs">OR</span>
-          <div className="flex-grow border-t border-gray-300"></div>
-        </div>
-
-        <button
-          type="button"
-          onClick={handleGoogleLogin}
-          className="mt-3 w-full bg-red-500 text-white py-2 rounded-md text-sm font-semibold hover:bg-red-400 transition-all"
-        >
-          Sign in with Google
-        </button>
-
-        <button
-          type="button"
-          onClick={handleGuestLogin}
-          className="mt-3 w-full bg-gray-600 text-white py-2 rounded-md text-sm font-semibold hover:bg-gray-500 transition-all"
-        >
-          Sign in as Guest
-        </button>
-
-        <p className="mt-4 text-center text-xs text-gray-500">
-          Don't have an account?{" "}
-          <Link
-            to="/register"
-            className="text-indigo-600 hover:text-indigo-500 font-semibold"
-          >
-            Register here
-          </Link>
-        </p>
-      </div>
+  <div className="w-[90%] sm:w-[320px] bg-white p-5 rounded-lg shadow-md text-gray-900">
+    <div className="text-center">
+      <img
+        alt="GoVetrix"
+        src={logo}
+        className="mx-auto h-8 w-auto object-contain rounded-lg"
+      />
+      <h2 className="mt-2 text-xl font-bold">Login</h2>
     </div>
+
+    {/* Form */}
+    <form className="mt-4 space-y-4" autoComplete="off" onSubmit={handleSubmit}>
+      {Object.keys(formData).map((field) => (
+        <div key={field} className="relative">
+          <input
+            id={field}
+            name={field}
+            type={field}
+            value={formData[field]}
+            onChange={handleChange}
+            className={`peer block w-full rounded-md px-3 pb-2 pt-4 text-gray-900 bg-gray-50 border-0 border-b-2 focus:outline-none focus:ring-0 ${
+              errors[field]
+                ? "border-red-500"
+                : "border-gray-300 focus:border-blue-600"
+            }`}
+            placeholder=" "
+          />
+          <label
+            htmlFor={field}
+            className="absolute left-3 top-3 text-gray-500 text-sm transform scale-75 -translate-y-4 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-blue-600"
+          >
+            {field.charAt(0).toUpperCase() + field.slice(1)}
+          </label>
+          {errors[field] && (
+            <span className="text-red-500 text-xs">{errors[field]}</span>
+          )}
+        </div>
+      ))}
+
+      <button
+        type="submit"
+        className="w-full bg-indigo-600 text-white py-2 rounded-md text-sm font-semibold hover:bg-indigo-500 transition-all"
+      >
+        Sign In
+      </button>
+    </form>
+
+    <div className="mt-4 flex items-center">
+      <div className="flex-grow border-t border-gray-300"></div>
+      <span className="mx-2 text-gray-500 text-xs">OR</span>
+      <div className="flex-grow border-t border-gray-300"></div>
+    </div>
+
+    <button
+      type="button"
+      onClick={handleGoogleLogin}
+      className="mt-3 w-full bg-red-500 text-white py-2 rounded-md text-sm font-semibold hover:bg-red-400 transition-all"
+    >
+      Sign in with Google
+    </button>
+
+    <button
+      type="button"
+      onClick={handleGuestLogin}
+      className="mt-3 w-full bg-gray-600 text-white py-2 rounded-md text-sm font-semibold hover:bg-gray-500 transition-all"
+    >
+      Sign in as Guest
+    </button>
+
+    <p className="mt-4 text-center text-xs text-gray-500">
+      Don't have an account?{" "}
+      <Link
+        to="/register"
+        className="text-indigo-600 hover:text-indigo-500 font-semibold"
+      >
+        Register here
+      </Link>
+    </p>
+  </div>
+</div>
+
+
   );
 };
 

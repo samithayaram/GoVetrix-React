@@ -108,7 +108,7 @@ const AppInterface = () => {
               htmlFor="from"
               className="block text-sm font-medium text-white"
             >
-              FROM:
+              Pickup Location:
             </label>
             <div className="mt-2 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-2">
               <Autocomplete onPlaceChanged={() => {}}>
@@ -143,7 +143,7 @@ const AppInterface = () => {
               htmlFor="destination"
               className="block text-sm font-medium text-white"
             >
-              TO:
+              Drop Location:
             </label>
             <div className="mt-2">
               <Autocomplete onPlaceChanged={() => {}}>

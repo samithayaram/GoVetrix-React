@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import qrCode from '../assets/Qrcode.jpg';
+import qrCode from "../assets/Qrcode.jpg";
 
 const Payment = () => {
   const location = useLocation();
@@ -32,8 +32,8 @@ const Payment = () => {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center px-4 py-8">
         <div className="max-w-lg w-full bg-white shadow-lg rounded-xl p-8 text-center">
-          <h1 className="text-3xl font-bold mb-6 text-green-600">
-            🎉 Successfully Booked Ride!
+          <h1 className="text-lg sm:text-3xl font-bold mb-6 text-green-600 whitespace-nowrap">
+          🎉Successfully Booked Ride!
           </h1>
           <p className="text-gray-700 mb-4">
             Your ride from <strong>{fromAddress.split(",")[0]}</strong> to{" "}
@@ -63,7 +63,9 @@ const Payment = () => {
 
         {/* Vehicle Payment Heading (Left Aligned) */}
         <header className="flex justify-center items-center mt-10 mb-8">
-          <h1 className="text-2xl font-bold">🚗 Vehicle Payment</h1>
+          <h1 className="text-lg sm:text-2xl font-extrabold whitespace-nowrap">
+            🚗 Vehicle Payment
+          </h1>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

@@ -14,6 +14,7 @@ import AppInterface from './screens/appInterface';
 import LocationComponent from './screens/location-page';
 import Payment from './screens/payment';
 import { ToastContainer } from 'react-toastify';
+import ThankYou from './components/contact-success';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           path="/payment"
           element={<Payment />}
         />
+         <Route path="/contact-success" element={<ThankYou />} />
 
         <Route
           path="/*"

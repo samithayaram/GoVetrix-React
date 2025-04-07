@@ -7,7 +7,7 @@ import {
 } from "@react-google-maps/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FaCar, FaMotorcycle, FaBicycle, FaTaxi } from "react-icons/fa";
-import logo from '../assets/logo.png';
+import logo from "../assets/logo.png";
 
 const LocationComponent = () => {
   const navigate = useNavigate();
@@ -206,7 +206,7 @@ const LocationComponent = () => {
           </button>
 
           {/* Centered Logo */}
-          <div className="flex-grow flex justify-center">
+          <div className="flex-grow flex justify-end sm:justify-center pr-4 sm:pr-0">
             <img
               src={logo}
               alt="Ride Logo"
